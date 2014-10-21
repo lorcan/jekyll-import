@@ -95,7 +95,7 @@ EOF
              'layout' => 'post',
              'title' => title.to_s,
              'created' => created,
-             'categories' => tags.split('|')
+             'categories' => tags.force_encoding("UTF-8").split('|')
            }.delete_if { |k,v| v.nil? || v == ''}.each_pair {
               |k,v| ((v.is_a? String) ? v.force_encoding("UTF-8") : v)
            }.to_yaml
